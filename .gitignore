@@ -1,0 +1,18 @@
+# --- Sistema Operativo (Archivos basura) ---
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# --- Visual Studio Code (Configuraciones locales) ---
+# Ignoramos esto porque tus configuraciones de una PC pueden
+# molestar en la otra (ej: rutas de php.exe diferentes)
+.vscode/
+
+# --- PHP y XAMPP ---
+# Logs de errores (si se generan localmente)
+error_log
+*.log
+
+# Dependencias (para más adelante en la materia)
+# Es buena práctica ponerlo ya, por si usamos Composer luego.
+vendor/
