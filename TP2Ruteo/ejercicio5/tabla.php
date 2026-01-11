@@ -1,9 +1,12 @@
 <?php
 // Definimos la función que será llamada por el router
-function showTabla($limit = 10) {
-    // Si el límite no viene o es inválido, forzamos un default
-    if (empty($limit) || !is_numeric($limit)) {
-        $limit = 10;
+function showTabla($params = null) {
+    // Si $params es un arreglo, el límite está en la posición 0. 
+    // Si no, probamos usar el valor directo o default 10.
+    if (is_array($params) && isset($params[0])) {
+        $limit = $params[0];
+    } else {
+        $limit = 10; // Valor por defecto
     }
     
     // IMPORTANTE: Definimos la BASE_URL para que los links funcionen bien en subcarpetas
