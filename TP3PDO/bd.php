@@ -39,4 +39,20 @@ function insertarTarea($titulo,$descripcion,$finalizada){
 
     $sentencia ->execute(array($titulo,$descripcion,$finalizada));
 }
+
+function borrarTarea($idTarea){
+
+    $db = getDB();
+
+    $sentencia = $db->prepare("DELETE FROM tareas WHERE id_tarea = ?");
+    $sentencia->execute(array($idTarea));
+}
+
+function actualizarTarea($idTarea){
+
+    $db = getDB();
+
+    $sentencia = $db->prepare("UPDATE tareas SET finalizada = 1 WHERE id_tarea = ?");
+    $sentencia->execute(array($idTarea));
+}
 ?>
