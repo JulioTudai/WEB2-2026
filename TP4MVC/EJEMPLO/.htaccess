@@ -1,0 +1,13 @@
+DirectoryIndex router.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # 2. Si el archivo no existe y la carpeta no existe...
+
+    RewriteBase /web2/TP4MVC/EJEMPLO/
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # 3. ...redirige todo al router.
+    RewriteRule ^(.*)$ router.php?action=$1 [QSA,L]
+</IfModule>
