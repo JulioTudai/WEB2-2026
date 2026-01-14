@@ -1,6 +1,6 @@
 <?php
 
-class ProductView{
+class ProductView {
 
     public function listProducts($productos) {
         ?>
@@ -12,15 +12,36 @@ class ProductView{
             <base href="<?php echo BASE_URL ?>">
             <title>Lista de Productos</title>
             <style>
-                /* Un poco de CSS básico para que la tabla se vea decente */
+                /* Estilos básicos */
                 table { width: 100%; border-collapse: collapse; margin-top: 20px; }
                 th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
                 th { background-color: #f4f4f4; }
                 tr:hover { background-color: #f1f1f1; }
+                
+                /* Estilo para el formulario */
+                .form-container { background: #f9f9f9; padding: 20px; margin-bottom: 20px; border: 1px solid #ddd; }
+                input, textarea { display: block; margin-bottom: 10px; width: 100%; padding: 5px; }
+                button { padding: 10px 15px; background: #28a745; color: white; border: none; cursor: pointer; }
             </style>
         </head>
-        <body>
+        <body background: #0a030300;>
             <h1>Listado de Productos</h1>
+
+            <div class="form-container">
+                <h3>Nuevo Producto</h3>
+                <form action="agregar" method="POST">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" required>
+                    
+                    <label>Descripción:</label>
+                    <textarea name="descripcion"></textarea>
+
+                    <label>Precio:</label>
+                    <input type="number" step="any" name="precio" required>
+
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
 
             <table>
                 <thead>
@@ -37,12 +58,10 @@ class ProductView{
                             <td><?php echo $producto->id_producto; ?></td>
                             <td><b><?php echo $producto->nombre; ?></b></td>
                             <td>
-                                <?php 
-                                    // Si la descripción es nula, mostramos un guión
-                                    echo $producto->descripcion ? $producto->descripcion : "-"; 
-                                ?>
+                                <?php echo $producto->descripcion ? $producto->descripcion : "-"; ?>
                             </td>
                             <td>$<?php echo $producto->precio; ?></td>
+                            <td class ="button"><a href='eliminar/<?php echo $producto->id_producto; ?>'>Eliminar</a> </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

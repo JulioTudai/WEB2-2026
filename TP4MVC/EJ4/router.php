@@ -27,7 +27,7 @@ switch ($params[0]){
         break;
 
     case 'agregar':
-        $controller->addProducto();
+        $controller->addProduct();
         break;
     
     case 'descripcion':
@@ -37,7 +37,7 @@ switch ($params[0]){
     case 'eliminar':
         if(!empty($params[1])){
 
-            $controller->deleteProducto($params[1]);
+            $controller->deleteProduct($params[1]);
         }else{
             $controller->showProducts();
         }
