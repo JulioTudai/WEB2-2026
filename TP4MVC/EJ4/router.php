@@ -43,6 +43,17 @@ switch ($params[0]){
         }
         break;
 
+    case 'actualizar':
+        $controller->updateProduct();
+        break;
+        
+    case 'editar':
+        // Esperamos la URL tipo: editar/5
+        if(isset($params[1])){
+            $controller->editProduct($params[1]);
+        }
+        break;
+
     default:
     $controller->showProducts();
 

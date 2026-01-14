@@ -44,7 +44,25 @@ class ProductController{
         $this->modelProduct->delete($id);
 
         header("Location: " . BASE_URL . "home");
+    }
 
+    function editProduct($id){
+    $product = $this->modelProduct->getProduct($id); // Pide el producto al modelo
+    $this->viewProduct->showEditForm($product);      // Se lo pasa a la vista nueva
+}
+
+    // 2. Recibe los datos del POST y guarda
+    function updateProduct(){
+        if (isset($_POST['id_producto']) && isset($_POST['nombre']) && isset($_POST['precio'])) {
+            $id = $_POST['id_producto'];
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $precio = $_POST['precio'];
+
+            $this->modelProduct->update($id, $nombre, $descripcion, $precio);
+            
+            header("Location: " . BASE_URL . "home");
+        }
     }
 
 }
